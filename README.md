@@ -36,3 +36,6 @@ More or less similar to the original code. Coming soon.
 
 - [ ] Plots.
 - [ ] Collect data in multiple threads.
+- [ ] Add logger file
+- [ ] Save results on csv
+- [ ] Properly add comment on the code
