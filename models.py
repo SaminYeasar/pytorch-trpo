@@ -19,6 +19,10 @@ class Policy(nn.Module):
         self.rewards = []
         self.final_value = 0
 
+        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        # send the network to device
+        self.to(self.device)
+
     def forward(self, x):
         x = torch.tanh(self.affine1(x))
         x = torch.tanh(self.affine2(x))
@@ -38,6 +42,10 @@ class Value(nn.Module):
         self.value_head = nn.Linear(64, 1)
         self.value_head.weight.data.mul_(0.1)
         self.value_head.bias.data.mul_(0.0)
+
+        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        # send the network to device
+        self.to(self.device)
 
     def forward(self, x):
         x = torch.tanh(self.affine1(x))
